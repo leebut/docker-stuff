@@ -47,34 +47,21 @@ Docker Compose searches for a file named **docker-compose.yaml**, which is where
 4) Here is a docker-compose.yaml similar to the file I used to create my MySQL container named **my_database** which creates a database named **pies**.
 
 ```
-
 version: "3"
 
 services:
-
-data:
-
-image: mysql
-
-container_name: my_database
-
-environment:
-
-MYSQL_DATABASE: pies
-
-MYSQL_ROOT_PASSWORD: 'gren5432ko'
-
-MYSQL_USER: norooty
-
-MYSQL_PASSWORD: 'gkke532lro'
-
-volumes:
-
-- ./mysql:/var/lib/mysql
-
-ports:
-
-- 3306:3306
+  data:
+    image: mysql
+    container_name: my_database
+    environment:
+      MYSQL_DATABASE: pies
+      MYSQL_ROOT_PASSWORD: 'gren5432ko'
+      MYSQL_USER: norooty
+      MYSQL_PASSWORD: 'gkke532lro'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
 
 ```
 
