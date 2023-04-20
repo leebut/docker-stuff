@@ -14,17 +14,17 @@ So, it appears that if you have < version 2, a hyphen in `docker-compose` is req
 
 ## Installation
 
-You can install Docker compose along with Docker, but if you already have Docker, just install Docker Compose.
+You can install Docker Compose along with Docker, but if you already have Docker, just install Docker Compose.
 
 You can use a GUI software manager or a terminal.
 
 **Debian**
 
-sudo apt install docker docker-compose
+`sudo apt install docker docker-compose`
 
 **Arch**
 
-sudo pacman -S docker docker-compose
+`sudo pacman -S docker docker-compose`
 
 ---
 
@@ -44,7 +44,7 @@ Docker Compose searches for a file named **docker-compose.yaml**, which is where
 
 `nano docker-compose.yaml`
 
-4) Here is a docker-compose.yaml similar to the file I used to create my MySQL container named **my_database** which creates a database names **pies**.
+4) Here is a docker-compose.yaml similar to the file I used to create my MySQL container named **my_database** which creates a database named **pies**.
 
 ```
 
