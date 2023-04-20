@@ -78,21 +78,21 @@ services:
 
 - **environment**: sets up the database and in this case:
 
-+ MYSQL_DATABSAE: Creates a new database during the build process
+    + MYSQL_DATABSAE: Creates a new database during the build process
 
-+ MYSQL_ROOT_PASSWORD: sets a root password for the database
+    + MYSQL_ROOT_PASSWORD: sets a root password for the database
 
-+ MYSQL_USER: creates a non-root user
+    + MYSQL_USER: creates a non-root user
 
-+ MYSQL_PASSWORS: sets the non-root user's password
+    + MYSQL_PASSWORS: sets the non-root user's password
 
-- **volumes**: maps a local directory in our project folder (or any other directory you define) to where MySQL works from, a bit like syncing. This persists the data locally as well as in the container, so if we remove the container, we can rebuild it, and the data will populate the database from the local directory during the build process.
+- **volumes**: maps a local directory in our project folder (or any other directory you define) to where MySQL works from in the container, a bit like syncing. This persists the data locally as well as volatile in the container, so if we remove the container, we can rebuild it with data from the local directory during the build process.
 
-+ Syntax: `local_directory:container_directory`
+    + Syntax: `local_directory:container_directory`
 
-+ The `./mysql` part creates a new directory in the project directory `:/var/lib/mysql` is were any data will be *synched* from.
+    + The `./mysql` part creates a new directory in the project directory `:/var/lib/mysql` is were any data will be *synched* from in the container.
 
-+ The name of the local directory can be anything that is meaningful.
+    + The name of the local directory can be anything that is meaningful.
 
 - **ports**: MySQL's default port is 3306. To reach it from our host, we need to map it to port 3306 (or any other port) on our machine.
 
