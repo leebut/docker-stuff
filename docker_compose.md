@@ -69,7 +69,10 @@ services:
 
 **Version** and **services** are required.
 
-- **image**: instructs docker compose to pull MySQL from Docker Hub.
+- **data**: this the name you give to the service. It could be named db, mysql, whatever_you_want.  
+    + The label is used when linking to other containers in the image.
+
+- **image**: instructs Docker Compose to pull (download) MySQL from [Docker Hub](https://hub.docker.com/_/mysql).
 
 - **container_name**: gives the Docker container a custom name, which will be used later.
 
