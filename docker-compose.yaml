@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  data:
+    image: mysql
+    container_name: my_database
+    environment:
+      MYSQL_DATABASE: pies
+      MYSQL_ROOT_PASSWORD: 'gren5432ko'
+      MYSQL_USER: norooty
+      MYSQL_PASSWORD: 'gkke532lro'
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
