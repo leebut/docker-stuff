@@ -109,9 +109,7 @@ Docker Compose will build and start the container. We can check the container is
 In the last column, you should see the container name.
 
 ```
-
-NAMES
-
+NAMES  
 my_database
 
 ```
@@ -122,11 +120,14 @@ You can set up MySQL Workbench as you would in any case, but set the host to **1
 
 I will use the information from the **docker-compose.yaml** configuration **above**.
 
-To use Docker in a terminal, we need to command Docker to execute MySQL:
+To use MySQL in a terminal, we need to command Docker to execute MySQL:
 
-`sudo docker exec -it my_database mysql -u norooty -p`
+**Make sure the terminal is in the project directory.**
+> `sudo docker exec -it my_database mysql -u norooty -p`
 
-I'm sure you don't want to do that every time, so let's create a BASH script. I'm not sure about ZSH scripts.
+> The syntax is `[sudo docker exec -it] [container_name] [app_to_run] [app options]`
+
+I'm sure you don't want to enter that line every time, so let's create a BASH script. I'm not sure about ZSH scripts. BASH scripts use the **.sh** file extension.
 
 In the project folder, create a new file with a short name. I named mine, `go_sql.sh`.
 
@@ -182,6 +183,6 @@ Docker may be started without checking for changes, with `sudo docker-compose st
 
 ---
 
-That should cover everything to get a Docker Compose image up and running with one container.
+That should cover most things to get a Docker Compose image up and running with one container.
 
 Docker images are found on [Docker Hub](https://hub.docker.com/_/mysql).
