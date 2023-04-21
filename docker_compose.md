@@ -1,16 +1,20 @@
 # Docker Compose
 
-This is a working document from my own experience using Docker. If you see any errors or improvements, please do comment.
+This is a working document from my own experience using Docker, so I update it when I discover new things. If you see any errors or improvements, please do comment.
 
 Docker Compose is great because you can link several containers in one docker-compose file that takes care of pulling, buliding and running all of containers from one command: `sudo docker-compose up` or `sudo docker-compose up -d` (for background running)
 
-Docker compose can be configured to not have to type in *sudo* every time, but please read the docs for that.
-
-I use Docker (**version: 2.17.2**) on Manjaro Linux, which is a fork of Arch. I recently installed Docker (**version: 1.29.2**) on Ubuntu , running on a virtual machine as well for testing.
+I use Docker (**version: 2.17.2**) on Manjaro Linux, which is a fork of Arch. I recently installed Docker (**version: 1.29.2**) on Ubuntu , running on a virtual machine for testing.
 
 On my Manjaro box I can use the command `docker compose up`, but on Ubuntu, I have to use `sudo docker-compose up`. I'm just creating awareness that systems, versions and setups differ.
+It seems that if you have Docker Compose **< version 2**, a hyphen in `docker-compose` is required.
 
-So, it appears that if you have < version 2, a hyphen in `docker-compose` is required.
+**NOTE:** To not have to type in sudo for every command, add your user to the docker group.
+> `sudo usermod -aG docker your_user`
+
+You need to **log out** and **in** again, or execute `newgrp docker` in the terminal to apply the change..
+Now, you don't need to type `sudo` to run `docker-compose` / `docker compose` commands.
+
 
 ## Installation
 
@@ -182,6 +186,27 @@ up will check for changes in the docker-compose.yaml file and recreate the conta
 Docker may be started without checking for changes, with `sudo docker-compose start`
 
 ---
+## Docker Compose up Issues
+
+### Changing the default database name
+I have discovered that when the name of the default MySQL database is changed in the docker-compose.yaml file (MYSQL_DATABASE:), during the next execution of docker-compose up (changes usually supercede previous configurations), the new default database is not created in the locally mapped directory. I have found two ways around this.
+
+**WARNING:** The following command will remove the persisted database data.
+The local directory that is mapped needs to be deleted, which allows Docker Compose to recreate it with the new database environment.
+Run `sudo rm -r local_directory`. In the example case above, `sudo rm -r mysql`
+
+**ALTERNATIVE**
+If you want to keep the existing database environment and have another one with a different name in the same container, do these things:
+
+- Change the name of the MYSQL_DATABASE
+- Change the name of the local mapped directory (./**mysql**:/usr/var/mysql), which will create a new one when `docker-compose up` is executed. It is then possible to switch between default databases.
+
+Docker Compose creates another sub-directory with the new name.
+
+ 
+
+
+
 
 That should cover most things to get a Docker Compose image up and running with one container.
 
